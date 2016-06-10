@@ -61,7 +61,7 @@ var result;
 
 function calc () {
     if (z == '+') {
-        result = (+x) + (+y) ;
+        result = (+x) + (+y);
     }
     else if (z == '-') {
         result = x - y;
@@ -80,20 +80,20 @@ alert(result);
 
 // Задача калькулятор
 
-var x = prompt('Введите число?', '');
-var y = prompt('Введите второе число?', '');
-var z = prompt('введите 1 - сложение; введите 2 - вычитание; введите 3 - умножение; введите 4 - деление', '');
+var x = prompt('Введите число', '');
+var z = prompt('введите знак - сложение,вычитание,умножение или деление', '');
+var y = prompt('Введите второе число', '');
 var result;
 
-switch(+z)
+switch(z)
 {
-    case 1 : result = (+x) + (+y);
+    case "+" : result = (+x) + (+y);
         break;
-    case 2 : result = x - y;
+    case "-" : result = x - y;
         break;
-    case 3 : result = x * y;
+    case "*" : result = x * y;
         break;
-    case 4: result = x / y
+    case "/" : result = x / y
 }
 alert(result);
 
