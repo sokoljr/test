@@ -64,15 +64,15 @@ y = parseFloat(y);
 function calc(r) {
    if (isNaN(x)) {
      alert( "Неккоректно введено первое число" );
-     return null
+     return null;
    };
    if (z !== "+" && z !== "-" && z !== "*" && z !== "/") {
      alert("Неккоректно введен знак"); 
-     return null
+     return null;
    };
    if (isNaN(y)) {
      alert( "Неккоректно введено второе число" );
-     return null
+     return null;
    };
    if (z === '+') {
       return (+x) + (+y);
@@ -82,12 +82,14 @@ function calc(r) {
       return  x * y;
    } else if (y == 0) {
       alert("На ноль делить нельзя");
-      return null
+      return null;
    } else {
       return x / y; 
    }
 }
-alert(calc(r));
+var result = calc(r);
+if (result !== null)
+  alert(result);
 
 
 // Задача калькулятор
@@ -143,3 +145,9 @@ function findUnique (string) {
     }
   }
 }
+
+
+//диапазон чисел
+
+var min = prompt ("Введите минимальное число", "");
+var max = prompt ("Введите максимальное число", "");
