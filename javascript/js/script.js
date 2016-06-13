@@ -54,28 +54,40 @@ alert(result);
 
 // Задача калькулятор
 
-var x = prompt('Введите число?', '');
-var y = prompt('Введите второе число?', '');
-var z = prompt('введите + ; введите - ; введите * ; введите / ', '');
-var result;
+var x = prompt('Введите число', '');
+var z = prompt('введите знак - сложение,вычитание,умножение или деление', '');
+var y = prompt('Введите второе число', '');
+var r;
+x = parseFloat(x);
+y = parseFloat(y);
 
-function calc () {
-    if (z == '+') {
-        result = (+x) + (+y);
-    }
-    else if (z == '-') {
-        result = x - y;
-    }
-    else if (z == '*') {
-        result = x * y;
-    }
-    else if (z == '/') {
-        result = x / y;
-    }
+function calc(r) {
+   if (isNaN(x)) {
+     alert( "Неккоректно введено первое число" );
+     return null
+   };
+   if (z !== "+" && z !== "-" && z !== "*" && z !== "/") {
+     alert("Неккоректно введен знак"); 
+     return null
+   };
+   if (isNaN(y)) {
+     alert( "Неккоректно введено второе число" );
+     return null
+   };
+   if (z === '+') {
+      return (+x) + (+y);
+   } else if (z === '-') {
+      return  x - y;
+   } else if (z === '*') {
+      return  x * y;
+   } else if (y == 0) {
+      alert("На ноль делить нельзя");
+      return null
+   } else {
+      return x / y; 
+   }
 }
-alert(result);
-
-
+alert(calc(r));
 
 
 // Задача калькулятор
@@ -83,29 +95,51 @@ alert(result);
 var x = prompt('Введите число', '');
 var z = prompt('введите знак - сложение,вычитание,умножение или деление', '');
 var y = prompt('Введите второе число', '');
-var result;
+var r;
+
 
 switch(z)
 {
-    case "+" : result = (+x) + (+y);
+    case "+" : r = (+x) + (+y);
         break;
-    case "-" : result = x - y;
+    case "-" : r = x - y;
         break;
-    case "*" : result = x * y;
+    case "*" : r = x * y;
         break;
-    case "/" : result = x / y
+    case "/" :
+    if (y == 0) {
+        alert("Нельзя делить на ноль!");
+    } else {
+        r = x / y;
+    } break;
 }
-alert(result);
+alert(r);
 
 
 
 
 
  // цельсий в фаренгейт
- var c = prompt ('введите значение','');
- var f;
- if (c > 0) {
-     f = c * 1.8 + 32;
- }
- alert(f);
+var celc = prompt ("Введите значиние", "");
 
+function convertFahr (celc) {
+  return 1.8 * celc + 32;
+}
+alert(convertFahr (celc));
+
+
+
+// уникальность
+var string = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
+
+function findUnique (string) {
+  alert (string.length); 
+  for (var i = 0; i < string.length; i++) {
+    var letter = string [i];
+    var nextIndex = string.indexOf (letter, i++);
+    if (nextIndex === -1) {
+      alert(letter);
+      break;
+    }
+  }
+}
