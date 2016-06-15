@@ -36,8 +36,6 @@ for (var i = min; i <= max; i++) {
     alert (i);
 } 
 
-
-
 // пример функции
 function toPower(number, power) {   
 	var result = 1;
@@ -48,8 +46,6 @@ function toPower(number, power) {
 
 var result = toPower(2, 2);
 alert(result);
-
-
 
 
 // Задача калькулятор
@@ -91,7 +87,6 @@ var result = calc(r);
 if (result !== null)
   alert(result);
 
-
 // Задача калькулятор
 
 var x,y;
@@ -127,7 +122,6 @@ switch(z) {
    }
 }
 
-
 // цельсий в фаренгейт
 var celc = prompt ("Введите значение", "");
 
@@ -135,8 +129,6 @@ function convertFahr (celc) {
   return 1.8 * celc + 32;
 }
 alert(convertFahr (celc));
-
-
 
 // уникальность
 var string = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
@@ -214,8 +206,6 @@ setTimeout(function() {
 
 a=5; // выведет 5
 
-
-
 // возведение в степень
 var number = prompt("введите число","");
 var power = prompt("введите степень","");
@@ -253,22 +243,34 @@ if(inArr(tmp)) continue;
 }
 console.log(arr);
 
-
 arr2 = [] // создаем массив в который будут возращатся возведенные в квадрат значения >100 
 var length = arr.length;
 var num;
 for(var i = 0; i < length; i++) {
  num = arr[i];
- if(num !== null) {
-   arr2.push(num * num);
- }
+ num = num*num;
+  if (num > 100) {
+    arr2.push(num);
+  }
 }
 console.log(arr2);
 
-
 //Написать функцию, которая будет сравнивать два объекта Date и сообщать, какая дата была раньше или если они равны.
-var before = new Date(2011, 0, 1);
-var now = new Date()
+var date1=new Date(),
+    date2=new Date(2016,6,15);
+compare(date2,date1)
+
+function compare(date1,date2) {
+  if(date1.getTime() >date2.getTime()) {
+    alert ("Первая дата позже второй");
+  }
+  else if (date1.getTime() == date2.getTime()) {
+    alert("Одновременно");
+  }
+  else {
+    alert("вторая дата позже первой");
+  }
+}
 
 // Показывает позицию буквы в строке.
 var text = "Значимость этих проблем настолько очевидна, что новая модель организационной деятельности обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Равным образом укрепление и развитие структуры играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям."
@@ -283,4 +285,42 @@ while ((pos = text.indexOf(target, pos + 1)) != -1) {
 var text = "Значимость этих проблем настолько очевидна, что новая модель организационной деятельности обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Равным образом укрепление и развитие структуры играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям."
 var len = text.match(/[аоэиуыеёюя]/igm).length - 1;
 alert(len);
+
+// Посчитать количество гласных в строке.
+
+var str = "Значимость этих проблем настолько очевидна, что новая модель организационной деятельности обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Равным образом укрепление и развитие структуры играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям."
+alert(counter(str));
+
+function counter(str) {
+  var vovels = ["а","е","ё","и","о","у","ы","э","ю","я"]
+  var count = 0;
+  for(var i=0; i < str.length; i++) {
+    var symbol = str[i].toLowerCase();
+    if(vovels.indexOf(str[i]) > -1) 
+      count++;
+  }
+  return count;
+}
+
+// свойство this
+
+var obj = {  // объект со свойствами
+  make: "ford",
+  model: "Escort",
+  engine: 2000,
+  price: 5000,
+  speed: 0,
+  toString: function() { // выводим наименования на страницу
+    return this.make + " " + this.model;
+  },
+  valueOf: function() { // выводим цену с пошлиной в алерте
+    return this.price;
+  },
+  run: function() {
+    this.speed = 60;
+  }
+}
+alert(obj.speed);
+obj.run();
+alert(obj.speed);
 
