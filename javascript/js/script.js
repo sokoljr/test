@@ -381,3 +381,10 @@ else
 array.sort(compare);
 
 console.log(array);
+
+// Счет чисел от 1 до n
+var sum = 0;
+for (j = 1; j <= 10; j=j+1) {
+  sum = sum + j;
+}
+console.log(sum);
