@@ -1,108 +1,128 @@
-//1.установка обработчика
-//2-ой способ
-var buttons = document.getElementsByTagName("button"); // Ищем элементы кнопок
+/*----------------------------------------
+1. Установка обработчиков событий
+-----------------------------------------*/
+
+var buttons = document.getElementsByTagName('button');
 buttons[1].onclick = function(e) {
-  alert("From function");
+    alert("From function");
 }
+//не добавили, а переопределили обработчик на click
 buttons[1].onclick = function(e) {
-  alert("From function 2");
+    alert("From function 2");
 }
 
-//3-й способ
-buttons[2].addEventListener('click', btnClick);
-buttons[2].addEventListener('click', btnClick2);
+//добавили сразу 2 обработчика на третюю кнопку
+buttons[2].addEventListener("click", btnClick);
+buttons[2].addEventListener("click", btnClick2);
 function btnClick(e) {
-  e.stopImmediatePropagation(); // остановит после первого события и не подкрасит кнопку, так как стоит  e.stopImmediatePropagation(); срабатывает только первый обработчик.
-  alert("From addEventListener 3");
+    e.stopImmediatePropagation();
+    alert("From addEventListener");
 }
-function btnClick2(e) { 
-  e.stopPropagation(); // остановит и не подкрасит кнопку, так как стоит  e.stopPropagation();
-  alert("From addEventListener 3.2"); 
+function btnClick2(e) {
+    e.stopPropagation();
+    alert("From addEventListener 2");
 }
 
-//обнуление обработчика событий
+//четвертая кнопка удаляет обработчики со второй и третьей 
 buttons[3].onclick = function() {
-  buttons[1].onclick = null;
-  buttons[2].removeEventListener('click', btnClick);
-}
+    //обнуление обработчика событий
+    buttons[1].onclick = null;
+
+    buttons[2].removeEventListener("click", btnClick);
+};
 
 
-//2.Всплытие событий
+/*----------------------------------------
+2. Всплытие событий
+-----------------------------------------*/
 
-var buttons_wrapper = document.querySelector(".buttons_wrapper");
+var buttons_wrapper = document.querySelector('.buttons_wrapper');
 var section_one = buttons_wrapper.parentElement;
 
-buttons_wrapper.addEventListener("click", eventLog);
-section_one.addEventListener("click", eventLog);
+buttons_wrapper.addEventListener('click', eventLog);
+section_one.addEventListener('click', eventLog);
 
 function eventLog(e) {
-  console.log("Тип события " + e.type + " текущий элемент " + e.currentTarget.tagName + " цель события: " + e.target.tagName);
-  e.target.style.backgroundColor = "red"; // подсветка событий
+    console.log("Тип события " + e.type + " текущий элемент: " + e.currentTarget.tagName + " цель события: " + e.target.tagName);
+    e.target.style.backgroundColor = "red";
 }
 
-// e.stopPropagation(); - остановка всплытия
-// e.stopImmediatePropagation(); - мнгновенная остановка события
-// e.preventDefault(); - функция отменяет действие по умолчанию браузера
 
-// 3. preventDefault
+/*----------------------------------------
+3. preventDefault
+-----------------------------------------*/
+
+//Два варианта отмены действия браузера по умолчанию
 //1
-document.querySelector('a[href*="google"]').onclick = function(e) {
-  e.preventDefault();
-};
-
+/*document.querySelector('a[href*="google"]').onclick = function(e) {
+    e.preventDefault();
+};*/
 //2
-document.querySelector("a[href*="google"]").onclick = function(e) {
-  return false;
+document.querySelector('a[href*="google"]').onclick = function() {
+    return false;
 };
 
-//4. Другие события
-
-// Мышинные события
-
-// ЛКМ
-// mousedown - когда нажали
-// mouseup - когда отпустили мышь
-//click
-//mousedown
-//mouseup
-//click
-//dblclick
-
-// ПКМ
-//mousedown
-//mouseup
-//contextmenu
-
-//mouse
-//mousemove
-//mouseover
-//mouseout
-
-//мышь
+/*----------------------------------------
+4. Другие события 
+-----------------------------------------*/
+ 
+//Мышь
+var mouse_test = document.querySelector('.mouse_test');
+mouse_test.addEventListener("mousedown", mouseLog);
+mouse_test.addEventListener("mouseup", mouseLog);
+mouse_test.addEventListener("click", mouseLog);
+mouse_test.addEventListener("dblclick", mouseLog);
+mouse_test.addEventListener("contextmenu", mouseLog);
 mouse_test.addEventListener("mouseover", mouseLog);
+mouse_test.addEventListener("mouseout", mouseLog);
 
-var mouse_run = document.querySelector(".mouse_run");
+var mouse_run = document.querySelector('.mouse_run');
 mouse_run.addEventListener("mousemove", mouseLog);
 
 function mouseLog(e) {
-  console.log("Событие: " + e.type + " координаты");
+   console.log("Событие: " + e.type + " координаты по экрану " + e.screenX + ":" + e.screenY + " кнопка: " + e.which); 
 }
 
-//клавиатура
-//keydown
-//keyup
-//keypress - e.charCode(клавиатура раскладка язык); e.keyCode(какая кнопка только); e.shiftKey, e.altKey, e.ctrlKey;
-document.addEventListener("keydown", keyLog);
-document.addEventListener("keyup", keyLog);
-document.addEventListener("keypress", keyLog);
+//Клавиатура
+var keyboard_test = document.querySelector('.keyboard_test');
+keyboard_test.addEventListener("keydown", keyLog);
+keyboard_test.addEventListener("keyup", keyLog);
+keyboard_test.addEventListener("keypress", keyLog);
 
 function keyLog(e) {
-  console.log("Событие: " + e.type + " код клавиши: " + e.keyCode + (e.charCode? " символ: " + String.fromCharCode(e.charCode) : ""));
+   console.log("Событие: " + e.type + (e.keyCode?  " код клавиши: " + e.keyCode : "") + (e.charCode? " символ: " + String.fromCharCode(e.charCode) : "")); 
 }
 
-//Формы события
-//Submit
-//input change
+//Форма
+var form = document.forms.questions;
+
+form.elements.name.oninput = function(e) {
+    this.value = this.value.toUpperCase();
+    console.log("Событие: " + e.type + " " + this.value);
+};
+
+form.elements.name.onchange = function(e) {
+    console.log("Событие: " + e.type + " " + this.value);
+};
+
+form.elements.updates.onchange = function(e) {
+    if (this.checked)
+        form.elements.news.checked = true;
+};
+
+form.onsubmit = function(e) {
+    e.preventDefault();
+    var errors = document.querySelector('p.errors');
+    if(form.elements.name.value.length < 2) {
+        errors.innerHTML = "Your name is too short";
+        return;
+    }
+    if(form.elements.surname.value.length < 2) {
+        errors.innerHTML = "Your surname is too short";
+        return;
+    }
+    this.submit();
+};
 
 
 

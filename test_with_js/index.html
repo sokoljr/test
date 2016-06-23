@@ -7,17 +7,17 @@
     <title>JavaScript Hello</title>
     </head>
     <body>
-        <form name="questions">
+        <form name = "pages">
             <div>
-                <label for="name">Name:</label>
+                <label for="name">Name:</br></label>
                 <input type="text" id="name" name="name">
             </div>
             <div>
-                <label for="surname">Surname:</label>
+                <label for="surname">Surname:</br></label>
                 <input type="text" id="surname" name="surname">
             </div>
             <div>
-                <label for="about">About yourself:</label>
+                <label for="about">About yourself:</br></label>
                 <textarea id="about" name="about"></textarea>
             </div>
             <div>
@@ -36,28 +36,11 @@
                 <label><input type="checkbox" id="news" name="news">Subscribe for news</label>
             </div>
             <p class="errors"></p>
-            <input type="submit" value="Send form">
+            <input type="submit" id="sub" value="Send form">
         </form>
+
         
-        
-        <section class="section_one">
-            <div class="buttons_wrapper">
-                <button onclick="alert('Inline js');">Inline script</button>
-                <button>Function</button>
-                <button>addEventListener</button>
-                <button>Remove events</button>
-            </div>
-        </section>
-
-        <a href="http://google.com.ua" target="_blank">Google - blocked by e.preventDefault()</a>
-
-        <section class="mouse_test">Mouse test</section>
-        <section class="mouse_run">Mouse run</section>
-        <section class="keyboard_test">
-            <textarea cols="30" rows="5">Test keyboard after clicking here</textarea>
-        </section>
-
-        <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
     </body>
 </html>
 </html>

@@ -1,0 +1,23 @@
+form {
+	padding: 20px 20px;
+	display: inline-block;
+	background-color: lightgray;
+}
+
+form  div {
+    margin: 20px 0;
+}
+
+.errors {
+	font-weight: bold;
+    color: red;
+    font-size: 22px;
+    line-height: 30px;
+    height: 30px;
+}
+
+#sub {
+	background-color: blue;
+	color: white;
+	border: none;
+}
