@@ -1,7 +1,14 @@
+button {
+	padding: 10px 10px;
+	font-size: 15px;
+	margin: 10px 10px;
+}
+
 div {
 	background-color: green;
-	color: red;
 	width: 400px;
 	height: 400px;
-	font-size: 40px;
+	text-align: center;
+	font-size: 60px;
+	color: red;
 }
