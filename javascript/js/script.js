@@ -392,3 +392,24 @@ console.log(sum);
 // 3 способа обработки событий
 // 1-й
 
+
+//Изменение гласных в красный цвет мгновенно
+
+var input = document.getElementById('input');
+var div = document.querySelector('div');
+var vowels = "aeyuio"; 
+var str; 
+
+input.oninput = function (e){
+	var char = input.value;
+	var arr = [];
+	for(var i =0 ; i < char.length; i++){
+		arr.push(char[i]);
+		if(vowels.indexOf(arr[i].toLowerCase()) >= 0) {
+			arr[i] = "<span>" + arr[i] + "</span>";
+		}
+	}
+	char = arr.join("");
+	div.innerHTML = char;
+};
+
