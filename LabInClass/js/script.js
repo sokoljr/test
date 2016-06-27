@@ -5,7 +5,7 @@ function sum() {
 	
 	for (i = 0; i < buttons.length; i++) {
 		buttons[i].addEventListener('click', function() {
-			div.innerText = +this.innerText + +div.innerText; });
+			div.textContent = +this.textContent + +div.textContent; });
 		};
 }
 
