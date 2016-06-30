@@ -8,8 +8,18 @@ function sum() {
 			div.textContent = +this.textContent + +div.textContent; });
 		};
 }
-
 sum();
+
+/*function sum() {
+
+	var buttons = document.getElementsByClassName('button');
+	var result = document.getElementById('result');
+
+	buttons[0].addEventListener('click', function(e) {
+			result.textContent = +e.target.textContent + +result.textContent; 
+	});
+}
+sum();*/
 
 
 
