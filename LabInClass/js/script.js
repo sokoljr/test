@@ -1,4 +1,4 @@
-function sum() {
+/*function sum() {
 
 	var buttons = document.getElementsByTagName('button');
 	var div = document.querySelector('div');
@@ -8,18 +8,20 @@ function sum() {
 			div.textContent = +this.textContent + +div.textContent; });
 		};
 }
-sum();
+sum();*/
 
-/*function sum() {
+function sum() {
 
-	var buttons = document.getElementsByClassName('button');
+	var buttons = document.getElementsByClassName('buttons');
 	var result = document.getElementById('result');
 
 	buttons[0].addEventListener('click', function(e) {
+		if (e.target.tagName !== "BUTTON") 
+			return;
 			result.textContent = +e.target.textContent + +result.textContent; 
 	});
 }
-sum();*/
+sum();
 
 
 

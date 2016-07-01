@@ -4,7 +4,7 @@ button {
 	margin: 10px 10px;
 }
 
-div {
+#result {
 	background-color: green;
 	width: 400px;
 	height: 400px;
